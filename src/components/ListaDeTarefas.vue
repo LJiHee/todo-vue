@@ -3,7 +3,7 @@ const props = defineProps(['tarefas'])
 </script>
 
 <template>
-     <ul class="list-group mt-4">
+     <ul class="list-group mt-4" v-if="props.tarefas.length > 0">
           <li class="list-group-item" v-for="tarefa in props.tarefas">
                <input @change="evento => tarefa.finalizada = evento.target.checked" :checked="tarefa.finalizada"
                     :id="tarefa.titulo" type="checkbox">
@@ -12,6 +12,7 @@ const props = defineProps(['tarefas'])
                </label>
           </li>
      </ul>
+     <p class="mt-3 ms-2" v-else>Não existe tarefas pendentes.</p>
 </template>
 
 <style scoped>
